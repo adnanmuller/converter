@@ -1,6 +1,6 @@
 /* general */
 
-html { 
+html {
   height: 100%; width: 100%;
   margin: 0; padding: 0;
 }
@@ -54,7 +54,7 @@ ul#measurement-types li a:hover {
 
 form label {
   display: inline-block;
-  width: 45px;  
+  width: 45px;
 }
 
 form input[type="text"] {
@@ -74,7 +74,7 @@ form input[type="submit"] {
   color: black;
   display: block;
   background: white;
-  margin: 2em 0 2em 25px;
+  margin: 2em 0 2em 0;
   padding: 6px 12px;
   border: 1px solid black;
 }
@@ -82,4 +82,7 @@ form input[type="submit"] {
 form input[type="submit"]:hover {
   color: white;
   background: #FDB912;
+}
+
+#deletPost{display: block;
 }
