@@ -1,73 +1,7 @@
 <?php
-function convert_to_meters($value, $from_unit){
+include_once('includes/functions.php');
 
-  switch($from_unit){
-    case 'inches':
-      return $value*0.0254;
-      break;
-    case 'feet':
-      return $value*0.3048;
-      break;
-    case 'yards':
-      return $value*0.9144;
-      break;
-    case 'miles':
-      return $value*1609.344;
-      break;
-    case 'millimeters':
-      return $value*0.001;
-      break;
-    case 'centimeters':
-      return $value*0.01;
-      break;
-    case 'meters':
-      return $value;
-      break;
-    case 'kilometers':
-      return $value*1000;
-      break;
-    default:
-    return 'Unsupported unit.';
-  }
-}
 
-function convert_from_meters($value, $to_unit){
-
-  switch($to_unit){
-    case 'inches':
-      return $value/0.0254;
-      break;
-    case 'feet':
-      return $value/0.3048;
-      break;
-    case 'yards':
-      return $value/0.9144;
-      break;
-    case 'miles':
-      return $value/1609.344;
-      break;
-    case 'millimeters':
-      return $value/0.001;
-      break;
-    case 'centimeters':
-      return $value/0.01;
-      break;
-    case 'meters':
-      return $value;
-      break;
-    case 'kilometers':
-      return $value/1000;
-      break;
-    default:
-    return 'Unsupported unit.';
-  }
-}
-
-function convert_length($value, $from_unit, $to_unit){
-  $meter_value=convert_to_meters($value,$from_unit);
-  $new_value=convert_from_meters($meter_value,$to_unit);
-  return $new_value;
-}
 
 $from_value='';
 $from_unit='';
