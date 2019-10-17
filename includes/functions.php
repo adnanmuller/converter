@@ -37,6 +37,20 @@ const VOLUME_TO_LITER = array(
   "milliliters" => 0.001
 );
 
+// Using const with arrays requires PHP 5.6 or higher
+const MASS_TO_KILOGRAM = array(
+  "ounces" =>	0.0283495,
+  "pounds" =>	0.453592,
+  "stones" =>	6.35029,
+  "long_tons" =>	1016.05,
+  "short_tons" =>	907.185,
+  "milligrams" =>	0.000001,
+  "grams" =>	0.001,
+  "kilograms" =>	1,
+  "metric_tonnes" =>	1000
+);
+
+
 //--------------------Length--------------------------------
 function convert_to_meters($value, $from_unit){
   if(array_key_exists($from_unit, LENGTH_TO_METER)){
@@ -115,6 +129,32 @@ return $new_value;
 
 }
 
+
+//-------------------------MASS----------------------------
+
+function convert_to_kilogram($value, $from_unit){
+  //$from_unit=str_replace('square_','',$from_unit);
+  if(array_key_exists($from_unit, MASS_TO_KILOGRAM)){
+    return $value* MASS_TO_KILOGRAM[$from_unit];
+  }else{
+    return "(from)Unsupported unit";
+  }
+}
+
+function convert_from_kilogram($value, $to_unit){
+  if(array_key_exists($to_unit, MASS_TO_KILOGRAM)){
+    return $value/MASS_TO_KILOGRAM[$to_unit];
+  }else{
+    return "(to)Unsupported unit";
+  }
+}
+
+function convert_mass($value, $from_unit, $to_unit){
+$kilogram_value=convert_to_kilogram($value,$from_unit);
+$new_value=convert_from_kilogram($kilogram_value,$to_unit);
+return $new_value;
+
+}
 
 
 
