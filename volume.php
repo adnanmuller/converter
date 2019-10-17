@@ -22,6 +22,16 @@ if(isset($_POST['delet'])){
   print_r($_POST);
 }
 
+$volume_options = array(
+'cubic inches','cubic feet', 'imperial gallons', 'Imperial quarts', 'Imperial pints',
+'Imperial cups', 'Imperial ounces', 'Imperial tablespoons', 'Imperial teaspoons', 'US gallons',
+'US quarts', 'US pints', 'US cups', 'US ounces', 'US tablespoons', 'US teaspoons', 'cubics meters',
+'liters', 'milliliters'
+ );
+
+function optionize($string){
+  return str_replace(' ','_',strtolower($string));
+}
 ?>
 
 <!DOCTYPE html>
@@ -43,16 +53,16 @@ if(isset($_POST['delet'])){
           <label>From:</label>&nbsp;
           <input type="text" name="from_value" value="<?php echo $from_value ?>" />&nbsp;
           <select name="from_unit">
-            <option value="square_inches" <?php if(isset($_POST['from_unit'])){if($_POST['from_unit']=="square_inches"){echo " selected";}}  ?>>square inches</option>
-            <option value="square_feet" <?php if(isset($_POST['from_unit'])){if($_POST['from_unit']=="square_feet"){echo " selected";}} ?>>square feet</option>
-            <option value="square_yards"  <?php if(isset($_POST['from_unit'])){if($_POST['from_unit']=="square_yards"){echo " selected";}}  ?>>square yards</option>
-            <option value="square_miles" <?php if(isset($_POST['from_unit'])){if($_POST['from_unit']=="square_miles"){echo " selected";}}?>>square miles</option>
-            <option value="square_millimeters" <?php if(isset($_POST['from_unit'])){if($_POST['from_unit']=="square_millimeters"){echo " selected";}} ?>>square millimeters</option>
-            <option value="square_centimeters" <?php if(isset($_POST['from_unit'])){if($_POST['from_unit']=="square_centimeters"){echo " selected";}} ?>>square centimeters</option>
-            <option value="square_meters" <?php if(isset($_POST['from_unit'])){if($_POST['from_unit']=="square_meters"){echo " selected";}}  ?>>square meters</option>
-            <option value="square_kilometers" <?php if(isset($_POST['from_unit'])){if($_POST['from_unit']=="square_kilometers"){echo " selected";}}  ?>>square kilometers</option>
-            <option value="acres" <?php if(isset($_POST['from_unit'])){if($_POST['from_unit']=="acres"){echo " selected";}}  ?>>acres</option>
-            <option value="hectars" <?php if(isset($_POST['from_unit'])){if($_POST['from_unit']=="hectars"){echo " selected";}}  ?>>hectars</option>
+
+            <?php foreach ($volume_options as $unit){
+              $opt=optionize($unit);
+              echo "<option value=\"{$opt}\"";
+              if(isset($_POST['from_unit'])){
+                if($_POST['from_unit']==$opt){
+                echo " selected";}}
+                echo  ">{$unit}</option>";
+            } ?>
+
           </select>
         </div>
 
@@ -60,16 +70,16 @@ if(isset($_POST['delet'])){
           <label>To:</label>&nbsp;
           <input type="text" name="to_value" value="<?php echo $to_value ?>" />&nbsp;
           <select name="to_unit">
-            <option value="square_inches" <?php if(isset($_POST['to_unit'])){if($_POST['to_unit']=="square_inches"){echo " selected";}}  ?>>square inches</option>
-            <option value="square_feet" <?php if(isset($_POST['to_unit'])){if($_POST['to_unit']=="square_feet"){echo " selected";}} ?>>square feet</option>
-            <option value="square_yards"  <?php if(isset($_POST['to_unit'])){if($_POST['to_unit']=="square_yards"){echo " selected";}}  ?>>square yards</option>
-            <option value="square_miles" <?php if(isset($_POST['to_unit'])){if($_POST['to_unit']=="square_miles"){echo " selected";}}?>>square miles</option>
-            <option value="square_millimeters" <?php if(isset($_POST['to_unit'])){if($_POST['to_unit']=="square_millimeters"){echo " selected";}} ?>>square millimeters</option>
-            <option value="square_centimeters" <?php if(isset($_POST['to_unit'])){if($_POST['to_unit']=="square_centimeters"){echo " selected";}} ?>>square centimeters</option>
-            <option value="square_meters" <?php if(isset($_POST['to_unit'])){if($_POST['to_unit']=="square_meters"){echo " selected";}}  ?>>square meters</option>
-            <option value="square_kilometers" <?php if(isset($_POST['to_unit'])){if($_POST['to_unit']=="square_kilometers"){echo " selected";}}  ?>>square kilometers</option>
-            <option value="acres" <?php if(isset($_POST['from_unit'])){if($_POST['from_unit']=="acres"){echo " selected";}}  ?>>acres</option>
-            <option value="hectars" <?php if(isset($_POST['from_unit'])){if($_POST['from_unit']=="hectars"){echo " selected";}}  ?>>hectars</option>
+
+            <?php foreach ($volume_options as $unit){
+              $opt=optionize($unit);
+              echo "<option value=\"{$opt}\"";
+              if(isset($_POST['to_unit'])){
+                if($_POST['to_unit']==$opt){
+                echo " selected";}}
+                echo  ">{$unit}</option>";
+            } ?>
+
           </select>
 
         </div>
