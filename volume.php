@@ -25,7 +25,7 @@ if(isset($_POST['delet'])){
 $volume_options = array(
 'cubic inches','cubic feet', 'imperial gallons', 'Imperial quarts', 'Imperial pints',
 'Imperial cups', 'Imperial ounces', 'Imperial tablespoons', 'Imperial teaspoons', 'US gallons',
-'US quarts', 'US pints', 'US cups', 'US ounces', 'US tablespoons', 'US teaspoons', 'cubics meters',
+'US quarts', 'US pints', 'US cups', 'US ounces', 'US tablespoons', 'US teaspoons', 'cubic meters',
 'liters', 'milliliters'
  );
 
