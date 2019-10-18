@@ -5,7 +5,7 @@ function optionize($string){
   return str_replace(' ','_',strtolower($string));
 }
 
-function float_to_string($float, $precision=20){
+function float_to_string($float, $precision=10){
   //Typecast to ensure the value is a string
   $float= (float) $float;
 $string=  number_format($float, $precision, '.', '');
@@ -171,6 +171,27 @@ function convert_mass($value, $from_unit, $to_unit){
 $kilogram_value=convert_to_kilogram($value,$from_unit);
 $new_value=convert_from_kilogram($kilogram_value,$to_unit);
 return $new_value;
+
+}
+
+//---------------------------SPEED------------------------------
+
+function convert_speed($value, $from_unit, $to_unit){
+
+list($from_dist, $from_time)=explode('_per_', $from_unit);
+list($to_dist, $to_time)=explode('_per_', $to_unit);
+
+  if($from_time=='hour'){
+    $value /=3600;
+    }
+    echo $value;
+    $value=convert_length($value, $from_dist, $to_dist);
+    echo $value;
+    if($to_time=='hour'){
+    return  $value *=3600;
+  }else{
+    return $value;
+  }
 
 }
 
