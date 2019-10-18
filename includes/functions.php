@@ -28,7 +28,8 @@ const LENGTH_TO_METER= array(
   'meters'=>1,
   'kilometers'=>1000,
   'acres'=>63.614907234075,
-  'hectares'=>100
+  'hectares'=>100,
+  'nautical_miles'=>1852
    );
 
    // Using const with arrays requires PHP 5.6 or higher
@@ -177,7 +178,8 @@ return $new_value;
 //---------------------------SPEED------------------------------
 
 function convert_speed($value, $from_unit, $to_unit){
-
+  if($from_unit=='knots'){echo $from_unit='nautical_miles_per_hour';}
+  if($to_unit=='knots'){echo $to_unit='nautical_miles_per_hour';}
 list($from_dist, $from_time)=explode('_per_', $from_unit);
 list($to_dist, $to_time)=explode('_per_', $to_unit);
 
