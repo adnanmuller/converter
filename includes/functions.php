@@ -172,8 +172,49 @@ function convert_mass($value, $from_unit, $to_unit){
 $kilogram_value=convert_to_kilogram($value,$from_unit);
 $new_value=convert_from_kilogram($kilogram_value,$to_unit);
 return $new_value;
+}
+
+//_______________temperature___________________________
+function convert_to_celcius($value, $from_unit){
+  switch($from_unit){
+    case 'celcius':
+      return $value;
+      break;
+    case 'farenheit':
+      return ($value-32)/1.8;
+      break;
+    case 'kelvin':
+      return $value-273.15;
+      break;
+    default:'Unsupported unit';
+
+  }
 
 }
+
+function convert_from_celcius($value, $to_unit){
+  switch($to_unit){
+    case 'celcius':
+      return $value;
+      break;
+    case 'farenheit':
+      return ($value*1.8)+32;
+      break;
+    case 'kelvin':
+      return $value+273.15;
+      break;
+    default:'Unsupported unit';
+
+  }
+}
+
+
+function convert_temperature($value, $from_unit, $to_unit){
+$celcius_value=convert_to_celcius($value,$from_unit);
+$new_value=convert_from_celcius($celcius_value,$to_unit);
+return $new_value;
+}
+
 
 //---------------------------SPEED------------------------------
 
