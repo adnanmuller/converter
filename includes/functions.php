@@ -1,5 +1,23 @@
 <?php
+//________________comon functions__________________________
 
+function optionize($string){
+  return str_replace(' ','_',strtolower($string));
+}
+
+function float_to_string($float, $precision=20){
+  //Typecast to ensure the value is a string
+  $float= (float) $float;
+$string=  number_format($float, $precision, '.', '');
+$string=rtrim($string,'0');
+$string=rtrim($string,'.');
+return $string;
+
+
+}
+
+
+//____________________________________________________________
 const LENGTH_TO_METER= array(
   'inches' =>0.0254,
   'feet'=>0.3048,
